@@ -41,21 +41,27 @@ class TodoWriteTool < LlmGateway::Tool
         return "Error: Todo at index #{index} is not a hash"
       end
 
-      required_fields = [ 'id', 'content', 'status', 'priority' ]
-      missing_fields = required_fields - todo.keys.map(&:to_s)
+      # Normalize hash to use symbol keys for consistent access
+      todo = todo.transform_keys(&:to_sym)
+      
+      required_fields = [ :id, :content, :status, :priority ]
+      missing_fields = required_fields - todo.keys
       unless missing_fields.empty?
         return "Error: Todo at index #{index} missing required fields: #{missing_fields.join(', ')}"
       end
 
       valid_statuses = [ 'pending', 'in_progress', 'completed' ]
-      unless valid_statuses.include?(todo['status'])
-        return "Error: Invalid status '#{todo['status']}' in todo #{todo['id']}. Must be one of: #{valid_statuses.join(', ')}"
+      unless valid_statuses.include?(todo[:status])
+        return "Error: Invalid status '#{todo[:status]}' in todo #{todo[:id]}. Must be one of: #{valid_statuses.join(', ')}"
       end
 
       valid_priorities = [ 'high', 'medium', 'low' ]
-      unless valid_priorities.include?(todo['priority'])
-        return "Error: Invalid priority '#{todo['priority']}' in todo #{todo['id']}. Must be one of: #{valid_priorities.join(', ')}"
+      unless valid_priorities.include?(todo[:priority])
+        return "Error: Invalid priority '#{todo[:priority]}' in todo #{todo[:id]}. Must be one of: #{valid_priorities.join(', ')}"
       end
+      
+      # Update the todo in the array with normalized keys
+      todos[index] = todo
     end
 
     # Store todos (in practice, this might be saved to a file or database)
@@ -63,9 +69,9 @@ class TodoWriteTool < LlmGateway::Tool
 
     # Generate summary
     total = todos.length
-    pending = todos.count { |t| t['status'] == 'pending' }
-    in_progress = todos.count { |t| t['status'] == 'in_progress' }
-    completed = todos.count { |t| t['status'] == 'completed' }
+    pending = todos.count { |t| t[:status] == 'pending' }
+    in_progress = todos.count { |t| t[:status] == 'in_progress' }
+    completed = todos.count { |t| t[:status] == 'completed' }
 
     summary = "Todo list updated successfully:\n"
     summary += "Total tasks: #{total}\n"
@@ -74,19 +80,19 @@ class TodoWriteTool < LlmGateway::Tool
     # List current todos
     summary += "Current tasks:\n"
     todos.each do |todo|
-      status_icon = case todo['status']
+      status_icon = case todo[:status]
       when 'pending' then '⏳'
       when 'in_progress' then '🔄'
       when 'completed' then '✅'
       end
 
-      priority_icon = case todo['priority']
+      priority_icon = case todo[:priority]
       when 'high' then '🔴'
       when 'medium' then '🟡'
       when 'low' then '🟢'
       end
 
-      summary += "#{status_icon} #{priority_icon} [#{todo['id']}] #{todo['content']}\n"
+      summary += "#{status_icon} #{priority_icon} [#{todo[:id]}] #{todo[:content]}\n"
     end
 
     summary
