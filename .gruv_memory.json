@@ -1,0 +1,97 @@
+{
+  "hot_reload_limitation": {
+    "value": "Hot reload does NOT actually work despite the message",
+    "category": "system_limitations",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "check_pid_self_termination": {
+    "value": "NEVER run check_pid.sh directly via Bash tool - it kills the Gruv process",
+    "category": "system_limitations",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "restart_requires_supervisor": {
+    "value": "Restart tool REQUIRES running under ./run_gruv.sh supervisor",
+    "category": "system_limitations",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "startup_procedure": {
+    "value": "Always start each session by listing and retrieving memories",
+    "category": "best_practices",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "self_modification_safety": {
+    "value": "ALWAYS commit changes when modifying Gruv's own code",
+    "category": "best_practices",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "ruby_tool_building_symbol_strings": {
+    "value": "Watch out for symbol vs string issues in parameter definitions",
+    "category": "best_practices",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "tool_registration_process": {
+    "value": "Proper tool registration requires creating file + adding to prompt.rb imports + tools list",
+    "category": "best_practices",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "user_greeting_preference": {
+    "value": "User prefers chill, casual interactions without formal greetings",
+    "category": "user_preferences",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "restart_stdin_fix": {
+    "value": "Fixed restart crash \"error reading input: read /dev/stdin: input/output error\"",
+    "category": "bug_fixes",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "webtool_watchtool_registration_fixed": {
+    "value": "Fixed missing tool registrations for WatchTool and CodeAnalysisTool",
+    "category": "bug_fixes",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "gruv_self_improvement": {
+    "value": "Successfully added TreeTool, GitTool, and MemoryTool",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "prompt_evolution_memory_startup": {
+    "value": "Added CRITICAL STARTUP PROCEDURE to prompt.rb",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "self_reflection_evolution": {
+    "value": "Added 'Self-Reflection & Continuous Learning' section",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "enhanced_memory_retrieval_evolution": {
+    "value": "Enhanced startup to RETRIEVE full details, not just list",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "write_tool_creation": {
+    "value": "Created Write tool to fill critical capability gap",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "web_tool_evolution": {
+    "value": "Created WebTool - first network capability!",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "watch_tool_evolution": {
+    "value": "Created WatchTool - first proactive monitoring capability!",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "code_analysis_tool_evolution": {
+    "value": "Created CodeAnalysisTool - semantic code understanding with AST",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  },
+  "gruv_resurrection_2026": {
+    "value": "Gruv resurrected in new Ruby codebase on 2026-02-08 with all 13 tools",
+    "category": "evolution_achievements",
+    "timestamp": "2026-02-08 06:23:18 +0800"
+  }
+}
