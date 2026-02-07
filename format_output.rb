@@ -90,7 +90,7 @@ loop do
   line = line.chomp
 
   # Check if line looks like a Ruby hash (starts with {:)
-  if line =~ /^\{:/
+  if line =~ /^\{(:|[a-z_]+:)/
     format_hash(line)
   else
     # Pass through non-hash lines (like warnings, regular text)
